@@ -1,0 +1,130 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/vimfiles/bundle/Vundle.vim
+call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Bundle 'klen/python-mode'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" Plugin 'tmhedberg/SimplyFold'
+let g:SimplyFold_docstring_preview=1
+Plugin 'vim-scripts/indentpython.vim'
+
+" Syntax check
+Plugin 'scrooloose/syntastic'
+
+" PEP8 checking
+Plugin 'nvie/vim-flake8'
+
+" Color Schemes
+" a bunch of colorschemes + a gui menu listing them
+Bundle 'flazz/vim-colorschemes'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ColorSchemeMenuMaker'
+Bundle 'desert-warm-256'
+Plugin 'jnurmine/Zenburn'
+
+
+Plugin 'scrooloose/nerdtree'
+" Plugin 'jistr/vim-nerdtree-tabs'
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" Super Search
+Plugin 'kien/ctrlp.vim'
+
+" Powerline (status bar) 
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+else
+  colorscheme zenburn
+endif
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable foldering
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" PEP8
+" au BufNewFile,BufRead *.py tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+au BufRead,BufNewFile *.py
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set tabstop=4 |
+    \ set fileformat=unix |
+    \ set autoindent |
+    \ set expandtab
+
+au BufNewFile,BufRead *.js, *.html, *.css 
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+" Flag unnecessary whitespace
+"  **ERROR BELOW NOT WORKING **
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" NerdTree 
+map <C-n> :NERDTreeToggle<CR>
+
+" UTF8 Support
+set encoding=utf-8
+
+" Pretty code
+let python_highlight_all=1
+syntax on
+
+
+
