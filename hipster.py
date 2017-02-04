@@ -131,15 +131,4 @@ for row in table.findAll('span'):
 '''
 
 '''
-hybrid-analysis
-The API key has been created
-API Key	3tkxjnylqnqc8ws8sk4sc0k84
-Secret	0d640cedef280f8f444d2e15689bd646c7d7a85ad2ae149c
-
-API key
-3tkxjnylqnqc8ws8sk4sc0k84
-Quota
-none
-Auth level
-Restricted - limited guest usage
 '''
